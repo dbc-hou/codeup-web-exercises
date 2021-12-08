@@ -1,5 +1,5 @@
-var intro = "One of my favorite foods is: ";
-var favFood = "a calzone with spinach garlic, & mozzarella. \n";
-var rationale = "For me, it's the ultimate comfort food."
+var intro = "One of my favorite foods is";
+var favFood = "\n\ta calzone with: \n\t\tspinach, \n\t\tgarlic, \n\t\t& mozzarella.";
+var rationale = "\n\tFor me, it's the ultimate comfort food.";
 console.log(intro + favFood + rationale);
 
