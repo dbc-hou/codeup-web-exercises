@@ -14,7 +14,7 @@ function getLoan(credit,cash) {
         return "Grats, dude, you get a loan!";
     }
     else if (cash >= 10000) {
-        return "Wow, we don't care about your credit score. What color would you like?"
+        return "Wow, we don't care about your credit score. What color would you like?";
     }
     else {
         return "Come back when your situation improves. Good day.";
@@ -23,4 +23,4 @@ function getLoan(credit,cash) {
 console.log("Credit 590, Cash on hand $12000: " + getLoan(590,12000));
 console.log("Credit 720, Cash on hand $5000: " + getLoan(720,5000));
 console.log("Credit 720, Cash on hand $3000: " + getLoan(720,3000));
-console.log("Credit 590, Cash on hand $9000: " + getLoan(590,9000))
+console.log("Credit 590, Cash on hand $9000: " + getLoan(590,9000));
