@@ -15,4 +15,3 @@ console.log("Amended sample: " + e);
 console.log("Position of 'c' in sample: " + f + " (i.e., not found)");
 console.log("Position of 'C' in sample: " + g);
 console.log("sample minus Hello: " + h);
-

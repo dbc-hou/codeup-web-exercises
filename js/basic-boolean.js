@@ -9,9 +9,10 @@ console.log("Total cost: $" + (LMDays+BBDays+HDays) * dailyRental);
 var GooglePerHour = 400;
 var AmazonPerHour = 380;
 var FacebookPerHour = 350;
-var GoogleTotal = GooglePerHour * 6;
-var AmazonTotal = AmazonPerHour * 4;
-var FacebookTotal = FacebookPerHour * 10;
+var GoogleHours = 6, AmazonHours = 4, FacebookHours = 10;
+var GoogleTotal = GooglePerHour * GoogleHours;
+var AmazonTotal = AmazonPerHour * AmazonHours;
+var FacebookTotal = FacebookPerHour * FacebookHours;
 var TotalCompensation = GoogleTotal + AmazonTotal + FacebookTotal
 console.log("Total compensation for the week: $" + TotalCompensation);
 
@@ -24,9 +25,9 @@ console.log("Total compensation for the week: $" + TotalCompensation);
 //The Can the Customer Use This Offer Scenario
 var productsPurchased = 3;
 var minProducts = 2;
-var offerExpired = False;
-var premiumMember = True;
-var regularCustomerCan = (productsPurchased >> minProducts) && offerExpired;
+var offerExpired = false;
+var premiumMember = true;
+var regularCustomerCan = (productsPurchased > minProducts) && offerExpired;
 var premiumCustomerCan = (premiumMember && offerExpired);
 console.log("Can the regular customer? " + regularCustomerCan);
 console.log("Can the premium customer? " + premiumCustomerCan);
