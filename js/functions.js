@@ -1,3 +1,5 @@
+//Before Monday morning's class, DO MORE READING ABOUT IIFE!!!
+
 "use strict";
 //This is not finished yet!
 /**
@@ -19,14 +21,14 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 var helloMessage = sayHello("Carl");
-console.log(helloMessage);
+alert(helloMessage);
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that
  * variable to the 'sayHello' function. You should see the same output in the
  * console.
  */
-var myName = "David Bruce Collins"
+var myName = "David Bruce Collins";
 console.log(sayHello(myName));
 
 // Don't modify the following line, it generates a random number between 1 and 3
@@ -58,8 +60,8 @@ function isTwo(r) {
         return false;
     }
 }
-console.log(random)
-console.log(isTwo(random))
+console.log(random);
+console.log(isTwo(random));
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -72,7 +74,7 @@ console.log(isTwo(random))
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 function calculateTip(percentage,bill) {
-    return percentage * bill;
+    return (percentage * bill).toFixed(2);
 }
 /**
  * TODO:
@@ -81,15 +83,16 @@ function calculateTip(percentage,bill) {
  * then display the dollar amount they should tip
  */
 function askCustomer() {
-let totalBill = prompt("What's the total on your bill?");
-let tipPercentage = prompt("What percentage would you like to tip?");
-if (isNaN(totalBill) || isNaN(tipPercentage)) {
-    alert("One of those values is not numeric, dude!");
-}
-else {
-    let convertTipToDecimal = tipPercentage / 100;
-    alert("Your tip will be " + calculateTip(totalBill,convertTipToDecimal));
-}
+    let totalBill = prompt("What's the total on your bill?");
+    let tipPercentage = prompt("What percentage would you like to tip?");
+
+    if (isNaN(totalBill) || isNaN(tipPercentage)) {
+        alert("One of those values is not numeric, dude!");
+    }
+    else {
+        let fixDecimalTip = (tipPercentage / 100);
+        alert("Your tip will be " + calculateTip(fixDecimalTip,totalBill));
+    }
 }
 
 askCustomer();
@@ -103,7 +106,20 @@ askCustomer();
  * Example:
  * > var originalPrice = 100;
  * > var discountPercent = .2; // 20%
- * > applyDiscount(originalPrice, dicountPercent) // 80
+ * > applyDiscount(originalPrice, discountPercent) // 80
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(originalPrice,discountPercent) {
+    return ((1 - (discountPercent/100)) * originalPrice).toFixed(2);
+}
+
+function calculateDiscount() {
+    let regularPrice = prompt("Please tell me the regular price:");
+    let discount = prompt("...and the percentage of the discount:");
+    let discountedPrice = applyDiscount(regularPrice, discount);
+    alert("With your " + discount + "% discount, your total is: " + discountedPrice)
+}
+
+calculateDiscount()
