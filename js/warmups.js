@@ -26,11 +26,11 @@
 // console.log("Credit 590, Cash on hand $9000: " + getLoan(590,9000));
 
 function isFive(numInput) {
-    if (numInput == 5) {
+    if (parseInt(numInput) === 5) {
         return true;
     } else {
         return false;
     }
 }
 
-console.log(isFive(Math.sqrt(25)));
+console.log(isFive("5.00"));

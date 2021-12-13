@@ -1,7 +1,6 @@
 //Before Monday morning's class, DO MORE READING ABOUT IIFE!!!
 
 "use strict";
-//This is not finished yet!
 /**
  * TODO:
  * Create a function called 'sayHello' that takes a parameter 'name'.
@@ -60,8 +59,11 @@ function isTwo(r) {
         return false;
     }
 }
-console.log(random);
-console.log(isTwo(random));
+//Alternative: use a boolean expression rather than a conditional.
+// return (r === 2);
+
+console.log("The number generated is " + random);
+console.log("Is it equal to 2? " + isTwo(random));
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -83,15 +85,18 @@ function calculateTip(percentage,bill) {
  * then display the dollar amount they should tip
  */
 function askCustomer() {
-    let totalBill = prompt("What's the total on your bill?");
-    let tipPercentage = prompt("What percentage would you like to tip?");
+    let totalBill = parseFloat(prompt("How much is the total bill?"));
+    let tipPercentage = parseFloat(prompt("What percentage would you like to tip?"));
 
     if (isNaN(totalBill) || isNaN(tipPercentage)) {
         alert("One of those values is not numeric, dude!");
     }
     else {
-        let fixDecimalTip = (tipPercentage / 100);
-        alert("Your tip will be " + calculateTip(fixDecimalTip,totalBill));
+        let fixDecimalTip = parseFloat(tipPercentage / 100);
+        let totalTip = fixDecimalTip * totalBill;
+        let totalWithTip = totalTip + totalBill;
+        alert("Your tip will be $" + calculateTip(fixDecimalTip,totalBill));
+        alert("Your total will be $" + totalWithTip.toFixed(2));
     }
 }
 
