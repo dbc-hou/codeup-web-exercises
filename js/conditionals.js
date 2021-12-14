@@ -190,13 +190,13 @@
 // funWithNumbers();
 
 function analyzeColor1(color) {
-    if (color.toLowerCase() == "blue" || color.toUpperCase() == "BLUE") {
+    if (color.toLowerCase() === "blue" || color.toUpperCase() === "BLUE") {
         return color + " is the color of the sky.";
     }
-    if (color.toLowerCase() == "red" || color.toUpperCase() == "RED") {
+    if (color.toLowerCase() === "red" || color.toUpperCase() === "RED") {
         return color + " is the color of love.";
     }
-    if (color.toLowerCase() == "green" || color.toUpperCase() == "GREEN") {
+    if (color.toLowerCase() === "green" || color.toUpperCase() === "GREEN") {
         return color + " is the color of envy.";
     }
     return "I'm sorry, I don't know anything about " + color;
