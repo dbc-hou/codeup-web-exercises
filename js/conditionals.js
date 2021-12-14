@@ -166,28 +166,39 @@
 //  * Can you refactor your code to use functions?
 //  * HINT: The way we prompt for a value could be improved
 //  */
-function funWithNumbers() {
-    let wannaPlay = confirm("Do you qualified to enter an integer when prompted for one?");
-    if (wannaPlay) {
-        let numInput = prompt("OK, so enter an integer:");
-        let parsedNum = parseInt(numInput);
-        if ((parsedNum % 2 == 1) || (parsedNum % 2 == -1)) {
-            alert(parsedNum + ": That's an odd number, isn't it?")
-        } else {
-            alert(parsedNum + ": I believe that's an even number.")
-        }
-        let numPlus100 = parsedNum + 100;
-        alert("Add 100 to that, and you get " + numPlus100);
-        if (parsedNum > 0) {
-            alert("Also, your number is positive.")
-        } else if (parsedNum < 0) {
-            alert("Also, your number is negative.")
-        } else {
-            alert("Your number is zero, neither positive nor negative.")
-        }
+// function funWithNumbers() {
+//     let wannaPlay = confirm("Do you qualified to enter an integer when prompted for one?");
+//     if (wannaPlay) {
+//         let numInput = prompt("OK, so enter an integer:");
+//         let parsedNum = parseInt(numInput);
+//         if ((parsedNum % 2 == 1) || (parsedNum % 2 == -1)) {
+//             alert(parsedNum + ": That's an odd number, isn't it?")
+//         } else {
+//             alert(parsedNum + ": I believe that's an even number.")
+//         }
+//         let numPlus100 = parsedNum + 100;
+//         alert("Add 100 to that, and you get " + numPlus100);
+//         if (parsedNum > 0) {
+//             alert("Also, your number is positive.")
+//         } else if (parsedNum < 0) {
+//             alert("Also, your number is negative.")
+//         } else {
+//             alert("Your number is zero, neither positive nor negative.")
+//         }
+//     }
+// }
+// funWithNumbers();
+
+function analyzeColor1(color) {
+    if (color == "blue" || color == "Blue") {
+        return color + " is the color of the sky.";
+    } else if (color == "red" || color == "Red") {
+        return color + " is the color of love.";
+    } else if (color == "green" || color == "Green") {
+        return color + " is the color of envy.";
+    } else {
+        return "I'm sorry, I don't know anything about " + color;
     }
 }
 
-
-
-    funWithNumbers();
+console.log(analyzeColor1("turquoise"))

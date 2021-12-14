@@ -45,4 +45,4 @@ function isMultipleOfThree(dividend) {
     }
 }
 
-console.log(isMultipleOfThree("x"))
+console.log(isMultipleOfThree(NaN))
