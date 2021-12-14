@@ -16,7 +16,7 @@ function funWithNumbers(numInput) {
     } else {
         absVal = "zero";
     }
-    return "This number is " + oddEven + " and " + absVal;
+    return "This number is " + oddEven + " and " + absVal + ".";
 }
 
 function analyzeInput(inputValue) {
