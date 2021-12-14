@@ -190,15 +190,19 @@
 // funWithNumbers();
 
 function analyzeColor1(color) {
-    if (color == "blue" || color == "Blue") {
+    if (color.toLowerCase() == "blue" || color.toUpperCase() == "BLUE") {
         return color + " is the color of the sky.";
-    } else if (color == "red" || color == "Red") {
-        return color + " is the color of love.";
-    } else if (color == "green" || color == "Green") {
-        return color + " is the color of envy.";
-    } else {
-        return "I'm sorry, I don't know anything about " + color;
     }
+    if (color.toLowerCase() == "red" || color.toUpperCase() == "RED") {
+        return color + " is the color of love.";
+    }
+    if (color.toLowerCase() == "green" || color.toUpperCase() == "GREEN") {
+        return color + " is the color of envy.";
+    }
+    return "I'm sorry, I don't know anything about " + color;
 }
 
-console.log(analyzeColor1("turquoise"))
+console.log(analyzeColor1("blue"))
+console.log(analyzeColor1("RED"))
+console.log(analyzeColor1("GrEeN"))
+console.log(analyzeColor1("rhinoceros"))
