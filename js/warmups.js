@@ -25,12 +25,24 @@
 // console.log("Credit 720, Cash on hand $3000: " + getLoan(720,3000));
 // console.log("Credit 590, Cash on hand $9000: " + getLoan(590,9000));
 
-function isFive(numInput) {
-    if (parseInt(numInput) === 5) {
-        return true;
+// function isFive(numInput) {
+//     if (parseInt(numInput) === 5) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+//
+// console.log(isFive("5.00"));
+
+function isMultipleOfThree(dividend) {
+    if (isNaN(dividend)) {
+        return false
+    } else if (dividend % 3 == 0 || dividend % -3 == 0) {
+        return true
     } else {
-        return false;
+        return false
     }
 }
 
-console.log(isFive("5.00"));
+console.log(isMultipleOfThree("x"))
