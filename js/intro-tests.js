@@ -16,10 +16,13 @@ function count(stringyInput) {
         return false;
     }
 }
+function countTests() {
+    console.log("This string passed to the function has this many characters: " + count("The quick brown fox jumps over the lazy dog."));
+    console.log("Do numerics work? " + count(23));
+    console.log("Let's try true: " + count(true));
+    console.log("Let's try false: " + count(false));
+    console.log("Let's try a null value: " + count(null));
+    console.log("What if we pass nothing to the parameter? " + count());
+}
 
-console.log("This string passed to the function has this many characters: " + count("The quick brown fox jumps over the lazy dog."));
-console.log("Do numerics work? " + count(23));
-console.log("Let's try true: " + count(true));
-console.log("Let's try false: " + count(false));
-console.log("Let's try a null value: " + count(null));
-console.log("What if we pass nothing to the parameter? " + count());
+countTests();
