@@ -22,15 +22,15 @@ function decrementByFive(){
 }
 
 function repeatInteger(){
-    for(i=1;i<10;i++){
-        let k = i.toString();
-        for(j=1;j<10;j++) {
+    for(let i=1;i<10;i++){
+        let k = "";
+        for(let j=1;j<=i;j++) {
             k = k + i.toString();
-            console.log(k);
         }
+        console.log(k);
     }
 }
 showMultiplicationTable(7);
 randomOddEven();
-//repeatInteger();
+repeatInteger();
 decrementByFive(100);

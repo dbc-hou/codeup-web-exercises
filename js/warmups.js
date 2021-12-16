@@ -35,14 +35,34 @@
 //
 // console.log(isFive("5.00"));
 
-function isMultipleOfThree(dividend) {
-    if (isNaN(dividend)) {
-        return false
-    } else if (dividend % 3 == 0 || dividend % -3 == 0) {
-        return true
+// function isMultipleOfThree(dividend) {
+//     if (isNaN(dividend)) {
+//         return false
+//     } else if (dividend % 3 == 0 || dividend % -3 == 0) {
+//         return true
+//     } else {
+//         return false
+//     }
+// }
+//
+// console.log(isMultipleOfThree(NaN))
+
+// TODO: MINI EXERCISE
+// TODO: print all even numbers between 0 and 25;
+// let counter = 0; // starting point
+function loopEvenNumbers(intLimit) {
+    let counter = 0;
+    console.log("******************");
+    if (counter > intLimit) {
+        console.log("The counter is already too large!")
     } else {
-        return false
+        while (counter <= intLimit) {
+            console.log("The counter value is now: " + counter);
+            counter += 2;
+        }
+        console.log("******************");
+        console.log("The counter has exceeded the limit. All done!");
     }
 }
 
-console.log(isMultipleOfThree(NaN))
+loopEvenNumbers(25);
