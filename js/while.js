@@ -21,10 +21,27 @@ function iceCreamTruck(allCones) {
             amountPurchased = allCones;
         } else {
             allCones -= amountPurchased;
-            console.log(amountPurchased + " cones purchased; " + allCones + " " + coneOrCones + " remaining.");
+            console.log(amountPurchased + " " + coneOrCones + " purchased; " + allCones + " " + coneOrCones + " remaining.");
         }
     } while (allCones > 0);
     console.log("Yay! No more cones!");
 }
+
+function loopEvenNumbers(intLimit) {
+    let counter = 0;
+    console.log("******************");
+    if (counter > intLimit) {
+        console.log("The counter is already too large!")
+    } else {
+        while (counter <= intLimit) {
+            console.log("The counter value is now: " + counter);
+            counter += 2;
+        }
+        console.log("******************");
+        console.log("The counter has exceeded the limit. All done!");
+    }
+}
+
+loopEvenNumbers(Math.abs(-25));
 multiplyByTwo();
 iceCreamTruck(Math.floor(Math.random() * 50) + 50);
