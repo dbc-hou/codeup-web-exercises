@@ -66,38 +66,3 @@ function loopEvenNumbers(intLimit) {
 }
 
 loopEvenNumbers(25);
-
-function isPrime(num) {
-    var primeness
-    if (num===2 || num===3) {
-        primeness = true
-    } else if (num > 3) {
-        for (var i=2;i<=Math.sqrt(num);i++) {
-            if (num % i === 0) {
-                primeness = false;
-                break;
-            } else {
-                primeness = true;
-            }
-        }
-    } else {
-        primeness = false;
-    }
-    // if (primeness) {
-    //     console.log(num + " is prime.");
-    // } else {
-    //     console.log(num + " is not prime.")
-    // }
-    return primeness
-}
-function First50Primes() {
-    var testNum = 5
-    for (i=0;i<=50;i++) {
-        if (isPrime(testNum)) {
-            console.log(i);
-        }
-        testNum++;
-    }
-}
-
-First50Primes();
