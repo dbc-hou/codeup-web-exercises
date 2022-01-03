@@ -16,7 +16,7 @@ function isPrime(num) {
     }
 }
 
-// isPrime(69);
+isPrime(79);
 
 function First50Primes() {
     let i = 1
@@ -31,4 +31,4 @@ function First50Primes() {
     }
 }
 
-First50Primes();
+//First50Primes();
