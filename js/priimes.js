@@ -4,6 +4,9 @@ function isPrime(num) {
         if (num % i === 0) {
             numFactors++;
         }
+        if (numFactors === 3) {
+            break;
+        }
     }
 //    console.log(numFactors);
     if (numFactors > 2) {
@@ -16,7 +19,7 @@ function isPrime(num) {
 // isPrime(69);
 
 function First50Primes() {
-    let i = 0
+    let i = 1
     let j = 2
     console.log("Here are the first 50 prime numbers!");
     while (i<=50) {
