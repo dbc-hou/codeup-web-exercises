@@ -48,7 +48,7 @@ function getMeaningOfLife(meaningfulNum) {
     }
 }
 
-getMeaningOfLife(42);
+//getMeaningOfLife(42);
 
 function multiplyByTwo() {
     let x = 2;
@@ -60,7 +60,8 @@ function multiplyByTwo() {
 }
 
 function iceCreamTruck(allCones) {
-    var coneOrCones
+    var coneOrCones = "cones";
+    console.log("I have " + allCones + " " + coneOrCones + " available for sale.");
     do {
         let amountPurchased = Math.floor(Math.random() * 5) + 1;
         if (allCones == 1) {
@@ -68,6 +69,7 @@ function iceCreamTruck(allCones) {
         } else {
             coneOrCones = "cones";
         }
+
         if (amountPurchased > allCones) {
             console.log("Sorry, can't sell you " + amountPurchased + "; only " + allCones + " " + coneOrCones + " remaining.");
             amountPurchased = allCones;
@@ -96,4 +98,4 @@ function loopEvenNumbers(intLimit) {
 
 // loopEvenNumbers(Math.abs(-25));
 // multiplyByTwo();
-// iceCreamTruck(Math.floor(Math.random() * 50) + 50);
+iceCreamTruck(Math.floor(Math.random() * 50) + 50);
