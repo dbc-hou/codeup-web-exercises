@@ -1,3 +1,55 @@
+function getPassword(userInput) {
+    let pw = "BettyWhite";
+    let strikes = 1
+    userInput = prompt("Enter the password, homes.");
+    while (userInput !== pw) {
+        console.log(strikes);
+        alert("Sorry, that's incorrect. Strike " + strikes + ".");
+        userInput = prompt("Enter the *correct* password, homes.");
+        strikes++;
+        if (strikes === 3) {
+            alert("Strike three, you're out!");
+            break;
+        } else if (userInput === pw && strikes < 3) {
+            alert("OK, you're in.");
+            break;
+        }
+    }
+}
+
+function getBetterPassword2() {
+    var answer = "howdy";
+    var attempts = 0;
+    var guess;
+    do {
+        guess = prompt("Enter your password: ");
+        attempts++;
+    } while(guess !== answer && count < 3);
+    if(guess === answer) {
+        alert("ok");
+    } else {
+        alert("not ok");
+    }
+}
+
+function getMeaningOfLife(meaningfulNum) {
+    let counter = parseInt(prompt("What is the meaning of life?"));
+    if (isNaN(counter)) {
+        counter = 0;
+    }
+    while (counter != meaningfulNum) {
+        alert("Sorry, that ain't it.");
+        console.log(counter);
+        counter = parseInt(prompt("What is the meaning of life?"));
+    }
+    alert("The meaning of Life, the Universe, and Everything is " + counter + ".");
+    if (counter === 42) {
+        alert("It's 11:59 pm. Do you know where your towel is?")
+    }
+}
+
+getMeaningOfLife(42);
+
 function multiplyByTwo() {
     let x = 2;
     console.log(x);
@@ -42,6 +94,6 @@ function loopEvenNumbers(intLimit) {
     }
 }
 
-loopEvenNumbers(Math.abs(-25));
-multiplyByTwo();
-iceCreamTruck(Math.floor(Math.random() * 50) + 50);
+// loopEvenNumbers(Math.abs(-25));
+// multiplyByTwo();
+// iceCreamTruck(Math.floor(Math.random() * 50) + 50);
