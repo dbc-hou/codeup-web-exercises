@@ -20,7 +20,7 @@ function getPassword(userInput) {
 function getBetterPassword2() {
     var answer = "howdy";
     var attempts = 0;
-    var guess;
+    var guess = "";
     do {
         guess = prompt("Enter your password: ");
         attempts++;
