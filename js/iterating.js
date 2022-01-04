@@ -18,17 +18,26 @@ console.log("There are " + names.length + " names in the names array.");
      * Create log statements that will print each of the names individually by
      * accessing each element's index.
      */
-// names.forEach(function (name)) {
-//     console.log("Let me introduce you to " + name + ".");
-//     }
+
+console.log("Hello, my name is " + names[0] + ".");
+console.log("Hello, my name is " + names[1] + ".");
+console.log("Hello, my name is " + names[2] + ".");
+console.log("Hello, my name is " + names[3] + ".");
+
+names.forEach(function (name) {
+    console.log("Let me introduce you to " + name + ".");
+})
     /**
      * TODO:
      * Write some code that uses a for loop to log every item in the names
      * array.
      */
-for (var i=0;i<(names.length-1);i++) {
-    console.log("Nice to meet you, " + names[i] + "!");
-}
+names.forEach(function (name) {
+    console.log("Nice to meet you, " + name + "!");
+})
+// for (var i=0;i<(names.length);i++) {
+//     console.log("Nice to meet you, " + names[i] + "!");
+// }
     /**
      * TODO:
      * Refactor your above code to use a `forEach` loop
