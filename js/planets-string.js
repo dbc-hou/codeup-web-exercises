@@ -1,8 +1,7 @@
-(function(){
-    "use strict";
+"use strict";
 
-    var planetsString = ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"];
-    var planetsArray = planetsString
+    var planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
+    var planetsArray = planetsString.split("|");
 
     /**
      * TODO:
@@ -23,5 +22,8 @@
      * list. You will need an opening AND closing <ul> tags around the entire
      * string, and <li> tags around each planet.
      */
-
-})();
+console.log("<ul>");
+    planetsArray.forEach(function (planet) {
+        console.log("<li>" + planet + "</li>");
+    });
+console.log("</ul>");

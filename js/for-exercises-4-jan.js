@@ -40,14 +40,14 @@ function getPasswordWithForLoop(numGuesses) {
     let correctPass = "Dynamo22";
     for(i = 0;i<numGuesses;i++) {
         let guess = prompt("Please enter your password.");
-        if (guess != correctPass) {
+        if (guess !== correctPass) {
             alert("Sorry, that's incorrect.");
         } else {
             alert("That'll do, pig. That'll do.");
             break;
         }
     }
-    if (i == numGuesses) {
+    if (i === numGuesses) {
         alert("You're all out of guesses, amigo. ¡Adios!")
     }
 }
