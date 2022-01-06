@@ -51,27 +51,36 @@ console.log(person.sayHello());
         {name: 'George', amount: 320}
     ];
 
-function totalSpent(amtPurchase) {
-    if (amtPurchase > 200) {
-        return amtPurchase * .88;
-    } else {
-        return amtPurchase;
-    }
-}
-
-function shopperDetails (shopper) {
-    let strDetail = shopper.name + " purchased a total of $" + shopper.amount + ".";
-    let strDiscount = shopper.name + " spent a total of $" + totalSpent(shopper.amount) + ".";
-}
+// function totalSpent(amtPurchase) {
+//     if (amtPurchase > 200) {
+//         return amtPurchase * .88;
+//     } else {
+//         return amtPurchase;
+//     }
+// }
+//
+// function shopperDetails (shopper) {
+//     let strDetail = shopper.name + " purchased a total of $" + shopper.amount + ".";
+//     let strDiscount = shopper.name + " spent a total of $" + totalSpent(shopper.amount) + ".";
+// }
 
 function HEBTransaction () {
+    var amtSpent;
+    var discountApplied;
     shoppers.forEach(function (shopper) {
-        shopperDetails(shopper);
+        if (shopper.amount > 200) {
+            amtSpent = parseFloat(shopper.amount * .88);
+            discountApplied = " did receive a discount and spent $"
+        } else {
+            amtSpent = parseFloat(shopper.amount);
+            discountApplied = " did not receive a discount and spent $"
+        }
+        console.log(shopper.name + discountApplied + amtSpent.toFixed(2) + ".");
     });
  }
 
 HEBTransaction();
-totalSpent()
+
     /** TODO:
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
@@ -84,6 +93,12 @@ totalSpent()
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+var books = []
+    createBook("Bad Luck Streak in Librarian School","Terwilliker","Stephens");
+    createBook("The Amazing Lack of Amazingness in Kansas","W.S. 'Poppa'","Kramden");
+    createBook("I Was the Walrus, but Now I\'m the Carpenter","Nancy","Lubovna");
+    createBook("What Is Your Quest?","Larissa","Márquez Espadrilla");
+    createBook("This Book Intentionally Left Untitled","Anonymous","Busch");
 
     /**
      * TODO:
@@ -109,6 +124,20 @@ totalSpent()
      *      ---
      *      ...
      */
+function bookInfo () {
+    console.log("-----")
+    for (let i = 0;i < books.length;i++) {
+        console.log("Book #" + (i + 1));
+        console.log("Title: " + books[i].title);
+        console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
+        console.log("---");
+    }
+}
+
+function showBookInfo (bookIndex) {
+    console.log(books[bookIndex].title + " was written by " + books[bookIndex].author.firstName + " " + books[bookIndex].author.lastName + ".");
+}
+showBookInfo(1);
 
     /**
      * Bonus:
@@ -120,5 +149,13 @@ totalSpent()
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
-
-
+function createBook(bookTitle,authorFirst,authorLast) {
+    var bookEntry = {
+        title : bookTitle,
+        author : {
+            firstName : authorFirst,
+            lastName : authorLast
+        }
+    }
+    books.push(bookEntry);
+}
