@@ -57,19 +57,19 @@ names.forEach(function (name) {
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
 function first(arrayInput1) {
-    console.log(arrayInput1[0]);
+    return (arrayInput1[0]);
 }
 
 function second(arrayInput2) {
-    console.log(arrayInput2[1]);
+    return (arrayInput2[1]);
 }
 
 function last(arrayInput3) {
-    console.log(arrayInput3[arrayInput3.length - 1]);
+    return (arrayInput3[arrayInput3.length - 1]);
 }
 
-    first([1,2,3,4,5]);
-    second([1,2,3,4,5]);
-    last([1,2,3,4,5]);
+    console.log(first([1,2,3,4,5]));
+    console.log(second([1,2,3,4,5]));
+    console.log(last([1,2,3,4,5]));
 })();
 
