@@ -20,7 +20,7 @@ function sayHello(name) {
  * console.log 'helloMessage' to check your work
  */
 var helloMessage = sayHello("Carl");
-alert(helloMessage);
+//alert(helloMessage);
 /**
  * TODO:
  * Store your name as a string in a variable named 'myName', and pass that

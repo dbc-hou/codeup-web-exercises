@@ -15,7 +15,7 @@ var person = {};
     person.firstName = "David";
     person.lastName =  "Collins";
     person.sayHello = function () {
-       return "Hello from " + person.firstName + " " + person.lastName + "!";
+       return "Hello from " + this.firstName + " " + this.lastName + "!";
     };
 
     /**
@@ -50,19 +50,6 @@ console.log(person.sayHello());
         {name: 'Ryan', amount: 250},
         {name: 'George', amount: 320}
     ];
-
-// function totalSpent(amtPurchase) {
-//     if (amtPurchase > 200) {
-//         return amtPurchase * .88;
-//     } else {
-//         return amtPurchase;
-//     }
-// }
-//
-// function shopperDetails (shopper) {
-//     let strDetail = shopper.name + " purchased a total of $" + shopper.amount + ".";
-//     let strDiscount = shopper.name + " spent a total of $" + totalSpent(shopper.amount) + ".";
-// }
 
 function HEBTransaction () {
     var amtSpent;
