@@ -127,4 +127,4 @@ function calculateDiscount() {
     alert("With your " + discount + "% discount, your total is: " + discountedPrice)
 }
 
-calculateDiscount()
+calculateDiscount();
