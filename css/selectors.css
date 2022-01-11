@@ -1,15 +1,25 @@
+* {
+    background-color: lightskyblue;
+    background-image: url('img/codeup-chevron-duck.png');
+    font-family: Palatino;
+}
 /* selector for id="container" */
 #container {
     margin: 50px auto;
     width: 500px;
     padding: 10px;
 }
-
+h1 {
+    text-align: center;
+}
+p.buzzphrase {
+    text-align: center;
+}
 /*  selector for all "h1" elements
     that are a descendent of id="container"
     and have a class of "fancy-header" */
 .fancy-header {
-    color: darkslategray;
+    color: darkgreen;
     text-decoration: underline;
 }
 
@@ -27,4 +37,13 @@ em {
     that are a direct child of an element with class="article" */
 a {
     float:right;
+}
+tr {
+    padding: 5px;
+    text-align: left;
+    font-size: large;
+}
+td {
+    border-bottom: solid;
+    border-right-style: dotted;
 }
