@@ -31,6 +31,6 @@ body, html {
 }
 
 .message-error {
-    background-color: red;
+    background-color: hotpink;
     color: darkred;
 }
