@@ -6,11 +6,9 @@ body, html {
     font-family: Arial, Ubuntu, sans-serif;
 }
 .message {
-    border-width: 1px;
+    border: 1px solid darkslategray;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px auto;
     padding: 5px;
     width: 40%;
 }
