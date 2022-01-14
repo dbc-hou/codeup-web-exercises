@@ -65,4 +65,21 @@ function loopEvenNumbers(intLimit) {
     }
 }
 
-loopEvenNumbers(25);
+var bugs = ["mosquito", "ant", "scorpion", "ant", "ant", "mosquito", "typo", "reference error", "type error"];
+// removeAll(bugs, "ant") should return ["mosquito", "scorpion", "mosquito", "typo", "reference error", "type error"]
+// removeAll(bugs, "mosquito") should return ["ant", "scorpion", "ant", "ant", "typo", "reference error", "type error"]
+// removeAll(bugs, "roach") should return the original array b/c “roach” has no occurrances.
+
+function removeAll(anyArray, anyItem) {
+    let newArray = new Array
+    for (let i = 0; i < anyArray.length; i++) {
+        if (anyArray[i] !== anyItem) {
+            newArray.push(anyArray[i]);
+        }
+    }
+
+    return newArray;
+}
+
+console.log("Original array bugs: " + bugs);
+console.log(removeAll(bugs,"ant"));
