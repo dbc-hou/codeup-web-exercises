@@ -12,7 +12,7 @@ function combinations(x,y) {
 function factorial(x) {
     if (isNaN(x)) {
         return 0;
-    } else if (x < 0) {
+    } else if (x < 0 || x > 170) {
         return 0;
     }
     x = parseInt(Math.abs(x));
@@ -34,4 +34,4 @@ function arrayToString(anyArray) {
     return j;
 }
 
-console.log(arrayToString(["The","quick","brown","fox"]));
+console.log(factorial(171));
