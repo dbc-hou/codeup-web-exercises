@@ -1,0 +1,98 @@
+.montserrat-logo {
+    font-family: SansSerif;
+    font-size: 3em;
+}
+
+ul {
+    box-sizing: border-box;
+    list-style: none;
+    font-family: sans-serif;
+    padding: 0;
+    margin: .5em;
+}
+
+a.inline-block-anchor {
+    display: inline-block;
+    font-family: "Work Sans", SansSerif;
+    font-size: small;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.logo-container {
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 3em;
+}
+
+a:hover {
+    color: blue;
+}
+
+.gray-navbar {
+    box-sizing: border-box;
+    background-color: #848487;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    color: black;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.logo-container a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
+}
+
+.logo-container a:hover {
+    color: blue;
+}
+
+ul.list-container li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "Work Sans", sans-serif;
+    flex-wrap: nowrap;
+    flex-basis: auto;
+}
+
+.list-container {
+    display: flex;
+    justify-items: space-evenly;
+}
+
+.list-container a {
+    font-family: sans-serif;
+    display: inline-block;
+}
+
+.inline-block-anchor {
+    font-family: "Work Sans", SansSerif;
+    padding: .2em;
+}
+
+.icon-things {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+}
+
+.style-free-list-thing {
+    display: flex;
+    justify-items: space-between;
+    flex-flow: row nowrap;
+}
+
+.style-free-list-thing a {
+    font-family: "Work Sans", sans-serif;
+    font-weight: bold;
+}
