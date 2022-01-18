@@ -1,8 +1,3 @@
-.montserrat-logo {
-    font-family: SansSerif;
-    font-size: 3em;
-}
-
 ul {
     box-sizing: border-box;
     list-style: none;
@@ -20,12 +15,11 @@ a.inline-block-anchor {
     font-weight: bold;
 }
 
-a.logo-container {
-    box-sizing: border-box;
-    display: inline-block;
-    font-size: 3em;
+img {
+    height: 2em;
+    width:  2em;
+    padding: 0;
 }
-
 a:hover {
     color: blue;
 }
@@ -39,14 +33,14 @@ a:hover {
 }
 
 .logo-container {
-    color: black;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
 .logo-container a {
     font-family: "Montserrat", sans-serif;
-    font-size: 1em;
+    font-size: 2em;
+    font-weight: bold;
     text-decoration: none;
     color: black;
 }
@@ -61,6 +55,7 @@ ul.list-container li {
     justify-content: flex-start;
     align-items: center;
     font-family: "Work Sans", sans-serif;
+    font-weight: bold;
     flex-wrap: nowrap;
     flex-basis: auto;
 }
@@ -76,14 +71,27 @@ ul.list-container li {
 }
 
 .inline-block-anchor {
-    font-family: "Work Sans", SansSerif;
     padding: .2em;
 }
 
-.icon-things {
+.icon-container {
     display: flex;
     align-items: center;
-    margin: 1em;
+    margin: 0 1em;
+
+}
+
+.icon-container a {
+    text-decoration: none;
+    font-family: "Work Sans", sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    color: black;
+    padding: .2em;
+}
+
+.icon-container a:hover {
+    color: blue;
 }
 
 .style-free-list-thing {
