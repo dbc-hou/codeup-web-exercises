@@ -34,4 +34,3 @@ function arrayToString(anyArray) {
     return j;
 }
 
-console.log(factorial(171));

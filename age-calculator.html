@@ -1,0 +1,47 @@
+<!--This code is adapted from Foolish Developer
+https://dev.to/code_mystery/javascript-age-calculator-calculate-age-from-date-of-birth-o9b-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/age-calculator.css">
+</head>
+<body>
+    <script src="js/date-calculations.js"></script>
+<!--This is the box that contains all the important elements.-->
+    <div class="container">
+
+<!--This is just the title of the age calculator box.-->
+        <div class="base">
+            <h4>Age Calculator</h4>
+        </div>
+
+<!--This is the three input boxes for the month, day, and year
+It contains three divs, all of class .block.
+Strangely, there's no <form> element here!-->
+        <div class="block">
+            <p class="title">Date</p>
+            <input type="text" name="date" id="date" placeholder="dd" required="required" minlength="1" maxlength="2" />
+        </div>
+        <div class="block">
+            <p class="title">Month</p>
+            <input type="text" name="month" id="month" placeholder="mm" required="required" minlength="1" maxlength="2" />
+        </div>
+        <div class="block">
+            <p class="title">Year</p>
+            <input type="text" name="year" id="year" placeholder="yyyy" required="required" minlength="4" maxlength="4" />
+        </div>
+
+<!--This is the div consisting only of a Submit button.-->
+        <div class="base">
+            <input type="button" name="submit" value="Submit" onclick="getAgeDMY()" />
+        </div>
+<!--And then we have a place to display the calculated age based on user input.-->
+        <div id="age"></div>
+    </div>
+
+
+</body>
+</html>
