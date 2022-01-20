@@ -46,6 +46,7 @@
             </ul>
         </div>
     </nav>
+
 <!-- Main page content with a photo of a pizza (yum!)
     I have added some CSS instructions to put the gauzy white banner behind the text.-->
     <div class="container">
@@ -58,18 +59,33 @@
     <h2>Build your own pizza!</h2>
     <ul class="nav nav-tabs justify-content-left ml-lg-1">
         <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="badge badge-pill badge-secondary">1</span> Size and crust</a>
+            <!--My code-->
+<!--            <a class="nav-link active" href="#"><span class="badge badge-pill badge-secondary">1</span> Size and crust</a>-->
+            <!--PQ's code-->
+            <a class="nav-link" id="Size_and_Crust-tab" data-toggle="tab" href="#Size_and_Crust" role="tab" aria-controls="Size_and_Crust" aria-selected="true"><span class="badge badge-secondary">1</span> Size and Crust
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><span class="badge badge-pill badge-secondary">2</span> Cheese and sauce</a>
+            <!--My code-->
+<!--            <a class="nav-link" href="#"><span class="badge badge-pill badge-secondary">2</span> Cheese and sauce</a>-->
+            <!--PQ's code-->
+            <a class="nav-link" id="Cheese_and_Sauce-tab" data-toggle="tab" href="#Cheese_and_Sauce" role="tab" aria-controls="Cheese_and_Sauce" aria-selected="false"><span class="badge badge-secondary">2</span> Cheese and Sauce
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><span class="badge badge-pill badge-secondary">3</span> Toppings</a>
+            <!--My code-->
+<!--            <a class="nav-link" href="#"><span class="badge badge-pill badge-secondary">3</span> Toppings</a>-->
+            <!--PQ's code-->
+            <a class="nav-link" id="Toppings-tab" data-toggle="tab" href="#Toppings" role="tab" aria-controls="Toppings" aria-selected="false"><span class="badge badge-secondary">3</span> Toppings
+            </a>
         </li>
     </ul>
 
 <!--Tab 1: Choose size and crust-->
-    <div class="card">
+<!--PQ provided the tab functionality (first two <div>s) -->
+< div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="Size_and_Crust" role="tabpanel" aria-labelledby="Size_and_Crust-tab">
+        <div class="card">
         <div class="card-header bg-primary text-white">
             Choose size and crust
         </div>
@@ -125,9 +141,16 @@
             <button type="button" class="btn btn-sm btn-primary">Next Step></button>
         </div>
     </div>
+    </div>
+</div>
 
 <!--Tab 2: Choose cheese and sauce-->
-    <div class="card">
+<!--PQ provided the tab functionality (first two <div>s) -->
+
+<div class="tab-pane fade" id="Cheese_and_Sauce" role="tabpanel" aria-labelledby="Cheese_and_Sauce-tab">
+    <div class="card" style="width: 100%;">
+    <div class="card-body">
+        <div class="card">
         <div class="card-header bg-primary text-white">
             Choose cheese and sauce
         </div>
@@ -176,8 +199,14 @@
             </div>
         </div>
     </div>
+    </div>
+</div>
 
 <!--Tab 3: Choose toppings-->
+<!--PQ provided the tab functionality (first two <div>s) -->
+<div class="tab-pane fade" id="Toppings" role="tabpanel" aria-labelledby="Toppings-tab">
+    <div class="card" style="width: 100%;">
+    <div class="card-body">
     <div class="card">
         <div class="card-header bg-primary text-white">
             Choose toppings
@@ -219,6 +248,8 @@
                 </li>
             </ul>
         </div>
+    </div>
+</div>
 
         <div class="card">
             <div class="card-header">
