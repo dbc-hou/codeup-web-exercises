@@ -11,3 +11,12 @@
 h2 {
     margin-left: .5em;
 }
+
+label {
+    margin-left: 1em;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+}
