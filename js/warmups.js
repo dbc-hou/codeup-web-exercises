@@ -81,5 +81,26 @@ function removeAll(anyArray, anyItem) {
     return newArray;
 }
 
-console.log("Original array bugs: " + bugs);
-console.log(removeAll(bugs,"ant"));
+var myCats = [
+    {
+        catName: "Fifi",
+        age: 5
+    },
+    {
+        catName: "Fluffy",
+        age: 3
+    },
+    {
+        catName: "Abby",
+        age: 7
+    }
+];
+
+function getNthCat(cats,n) {
+
+// print out the cat at index 1
+    return cats[n];
+
+}
+var aCat = getNthCat(myCats,1);
+console.log(aCat);
