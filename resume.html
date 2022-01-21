@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous">
+    <title>T-Block Resume Exercise</title>
+    <style>
+        h1, h2, h3, h4 {
+            /*text-align: center;*/
+            margin: .5em 0;
+        }
+        #intro {
+            background-color: lightgrey;
+            border-color: red;
+            border-style: dot-dot-dash;
+            border-width: 2px;
+        }
+
+        .col-lg-4, .col-lg-8 {
+            border: red dot-dash 1px;
+        }
+
+        #intro .list-container-item {
+            /*text-align: center;*/
+            list-style: none;
+            font-weight: bolder;
+        }
+
+        #resume-content {
+            border-width: 2px;
+            border-style: dot-dot-dash;
+            border-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<!--Main container-->
+    <div class="container-fluid">
+<!--Name, title, contact info-->
+        <div id="intro" class="container rounded-lg border border-success">
+            <h1 class="text-center">DAVID BRUCE COLLINS</h1>
+            <h2 class="text-center">Full-Stack Web Developer</h2>
+            <h3 class="text-center">Experienced, versatile, extraordinarily patient information technology professional
+                seeks a permanent, full-time position with an organization dedicated to improving the quality of life
+                for humans and the natural world.</h3>
+            <ul class="list-container text-center">
+                <li class="list-container-item"><img src="img/outline_phone_black_24dp.png"> 713-WEB-GURU</li>
+                <li class="list-container-item"><img src="img/outline_email_black_24dp.png"> dbcthewebguru@gmail.com</li>
+                <li class="list-container-item"><img src="img/linkedin.png" width="24px" height="24px"> @dbc-the-web-guru</li>
+                <li class="list-container-item"><img src="img/GithubLogo.png" width="20px" height="20px"> github: @dbc-the-web-guru</li>
+            </ul>
+        </div>
+        <hr style="height: 10px; width: 50%; color: purple">
+<!--Resume content: skills, education, projects, etc.-->
+        <div id="resume-content" class="row">
+            <div class="col-sm col-md col-lg-4 bg-light border-success border">
+                <h4 class="text-primary">
+                    SKILLS AND ABILITIES
+                </h4>
+                <ul class="list-container">
+                    <li class="list-container-item">HTML</li>
+                    <li class="list-container-item">CSS</li>
+                    <li class="list-container-item">JavaScript</li>
+                    <li class="list-container-item">Bootstrap</li>
+                </ul>
+                <h4 class="text-primary">
+                    ACADEMIC
+                </h4>
+                <p class="text-small-left">
+                    Graduated from Rice University, Houston TX, with a Bachelor of Arts in Classical Studies
+                </p>
+                <h4 class="text-primary">
+                    CERTIFICATIONS
+                </h4>
+                <ul class="list-container">
+                    <li class="list-container-item">Microsoft Certified Trainer (MCT)</li>
+                    <li class="list-container-item">Microsoft Certified Solution Developer (MCSD)</li>
+                    <li class="list-container-item">Help Desk Institute ITIL Foundations</li>
+                </ul>
+            </div>
+            <div id="profexp" class="col-lg-8 border-success border">
+                <h4 class="text-primary">
+                    PROFESSIONAL EXPERIENCE
+                </h4>
+                <h5 class="text-md-left">
+                    Blackboard Training Specialist—University of St. Thomas, Houston TX<br>
+                    2013 to 2019
+                </h5>
+                <p class="text-sm-left">Assisted faculty with assembling content for optimum effectiveness
+                    in Blackboard Learn, managing web conferences via Blackboard Collaborate, and maximizing
+                    accessibility for students with various disabilities using Blackboard Ally. Assistance rendered
+                    included advanced techniques in MS Office and customizing HTML/CSS in Blackboard content items.
+                    Copied course content from previous terms prior to each new term following faculty's specifications.
+                </p>
+                <h5 class="text-md-left">
+                    Technical Support Specialist—UT-MD Anderson Cancer Center, Houston TX<br>
+                    2002 to 2012
+                </h5>
+                <p class="text-sm-left">Provided numerous types of IT support, including account management and
+                    assistance with applications, via telephone and email for faculty,
+                    staff, students, and visitors at MD Anderson's high-volume support desk (4INFO).
+                    Dispatched desktop support personnel for physical repair of computers, printers, and
+                    mobile devices as needed. Routinely received the most calls and closed the highest percentage
+                    of job tickets among the 4INFO staff of 25-30.
+                </p>
+                <h4 class="text-primary">
+                    CONTRACT POSITIONS AND PROJECTS
+                </h4>
+                <ul class="list-container">
+                    <li class="list-container-item">Data migration project, A&C Plastics, Houston TX,
+                        February to April 2021 (via Ledgent Technologies</li>
+                    <li class="list-container-item">Instructional design consultant, Peavy School of Nursing,
+                        University of St. Thomas, Houston TX, March 2020 to January 2021</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- This is the include code for CDN-delivered JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous">
+    </script>
+</body>
+</html>
