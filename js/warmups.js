@@ -102,5 +102,23 @@ function getNthCat(cats,n) {
     return cats[n];
 
 }
+
+function reverseString(stringInput) {
+    let stringOutput = "";
+    for (let i = stringInput.length - 1; i >= 0; i--) {
+        stringOutput += stringInput[i];
+    }
+    return stringOutput;
+}
 var aCat = getNthCat(myCats,1);
-console.log(aCat);
+
+function findAverage(integerArray) {
+    let result = 0;
+    let j = integerArray.length
+    for (let i = 0;i < j - 1; i++) {
+        result += integerArray[i];
+    }
+    return result / j;
+}
+
+console.log(findAverage([-45,67,-100,23,35,-57]))
