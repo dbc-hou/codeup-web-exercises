@@ -121,4 +121,12 @@ function findAverage(integerArray) {
     return result / j;
 }
 
-console.log(findAverage([65,75,88,90,100]))
+function sumOfSquares(a,b) {
+    let leg1Squared = a**2;
+    //alternative: let leg1Squared = Math.pow(a,2)
+    let leg2Squared = b**2;
+    //alternative: let leg1Squared = Math.pow(b,2)
+    let hypotenuseSquared = leg1Squared + leg2Squared;
+    return hypotenuseSquared;
+}
+console.log(sumOfSquares(5,12));
