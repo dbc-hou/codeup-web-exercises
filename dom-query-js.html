@@ -62,25 +62,24 @@
 
         // TODO: Set text color on every other list item to grey
         var makeListItemsGrey = function () {
-            for (let i = 1;i < listItems.length;i = i+2) {
+            for (let i = 1; i < listItems.length; i = i + 2) {
                 listItems[i].style.color = "grey";
             }
-        }
 
-        document.getElementById("btn3").addEventListener("click",makeListItemsGrey);
-        //-----------------------------------------------------------------------
 
-        // TODO: Set text color of li with dbid = 1 to blue
-        // This could also involve document.querySelector
-        // This could be combined with the for loop above (changing to (i % 2 == 1))
-        let liTag = document.getElementsByTagName("li");
-        for (let j = 0;j < liTag.length; j++) {
-            let k = liTag[j].getAttribute("data-dbid");
-            if (k == 1){
-                liTag[j].style.color = "blue";
-                break;
+            // TODO: Set text color of li with dbid = 1 to blue
+            // This could also involve document.querySelector
+            // This could be combined with the for loop above (changing to (i % 2 == 1))
+            let liTag = document.getElementsByTagName("li");
+            for (let j = 0; j < liTag.length; j++) {
+                let k = liTag[j].getAttribute("data-dbid");
+                if (k == 1) {
+                    liTag[j].style.color = "blue";
+                    break;
+                }
             }
         }
+        document.getElementById("btn3").addEventListener("click",makeListItemsGrey);
         //-----------------------------------------------------------------------
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
@@ -93,6 +92,15 @@
         }
 
         document.getElementById("btn4").addEventListener("click",changeSubParagraph);
+        //-----------------------------------------------------------------------
+        // BONUS: Change the background color of the document to a random color when you click anywhere on the document.
+        var changeBGColor = function () {
+            document.body.style.backgroundColor = "rgb(" + Math.floor(Math.random()*255) + "," +
+                Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
+        }
+
+        window.addEventListener("click",changeBGColor);
+
         // }, myDelay);
         // clearInterval(waitTimeMessage);
     })();
