@@ -115,10 +115,10 @@ var aCat = getNthCat(myCats,1);
 function findAverage(integerArray) {
     let result = 0;
     let j = integerArray.length
-    for (let i = 0;i < j - 1; i++) {
+    for (let i = 0;i <= j - 1;i++){
         result += integerArray[i];
-    }
+    };
     return result / j;
 }
 
-console.log(findAverage([-45,67,-100,23,35,-57]))
+console.log(findAverage([65,75,88,90,100]))
