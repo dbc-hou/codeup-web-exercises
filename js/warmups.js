@@ -129,4 +129,19 @@ function sumOfSquares(a,b) {
     let hypotenuseSquared = leg1Squared + leg2Squared;
     return hypotenuseSquared;
 }
-console.log(sumOfSquares(5,12));
+
+function whichStringIsLonger(string1,string2) {
+    let len1 = string1.length;
+    let len2 = string2.length;
+    if (typeof(string1) !== "string" || typeof(string2) !== "string") {
+        return "false";
+    }
+    if (len1 > len2) {
+        return "first";
+    } else if (len1 < len2) {
+        return "second";
+    } else if (len1 = len2) {
+        return "neither";
+    }
+}
+console.log(whichStringIsLonger(37,"bobby"));
