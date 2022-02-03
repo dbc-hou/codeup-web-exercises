@@ -5,13 +5,15 @@
     <title>Latin for the End of the World</title>
 </head>
 <body>
-
-<h1 id="main-heading" class="main">
-    Lesson XXXIX
-</h1>
-<h2 id="subhead1" class="subhead">
-    The Superlative Degree, Part I
-</h2>
+<div id="top", class="header-section">
+    <h1 id="main-heading" class="main">
+        Lesson XXXIX
+    </h1>
+    <h2 id="subhead1" class="subhead">
+        The Superlative Degree, Part I
+    </h2>
+</div>
+<hr>
 <p id="introduction" class="intro">
     In this lesson, we will learn how to form and use the superlative degree (<em>-est</em> or <em>most</em>) for adjectives in Declensions I and II. Declension III adjectives will be covered in the next lesson. The lesson will include these subtopics:
 </p>
@@ -28,19 +30,36 @@
     <li id="subtopic4" class="codeup">
         the irregular superlative forms of five frequently-used adjectives:
         <ul id="subsubtopic-list" class="subsubtopics">
-            <li id="sub-subtopic1" class="subsubtopics-item">bonus/a/um</li>
-            <li id="sub-subtopic2" class="subsubtopics-item">malus/a/um</li>
-            <li id="sub-subtopic3" class="subsubtopics-item">magnus/a/um</li>
-            <li id="sub-subtopic4" class="subsubtopics-item">parvus/a/um</li>
-            <li id="sub-subtopic5" class="subsubtopics-item">multus/a/um</li>
+            <li id="sub-subtopic1" class="subsubtopics-item"><strong>bonus/a/um</strong></li>
+            <li id="sub-subtopic2" class="subsubtopics-item"><strong>malus/a/um</strong></li>
+            <li id="sub-subtopic3" class="subsubtopics-item"><strong>magnus/a/um</strong></li>
+            <li id="sub-subtopic4" class="subsubtopics-item"><strong>parvus/a/um</strong></li>
+            <li id="sub-subtopic5" class="subsubtopics-item"><strong>multus/a/um</strong></li>
         </ul>
     </li>
 </ul>
+
+<!-- Place the script for jquery BEFORE any js file that depends on it, including Bootstrap! -->
 <script src="js/jquery.js"></script>
 <script src="js/my-custom-javascript.js"></script>
 <script>
-    $('li').css('font-size','20px');
-    $('h1,p,li').css('background-color','#FF0');
+    // $('li').css('font-size','20px');
+    // $('h1,p,li').css('background-color','#FF0');
+
+    $('h1').click(function() {
+        $(this).css('background-color','#0FF');
+    });
+    $('p').dblclick(function() {
+        $(this).css('font-size','18px');
+    });
+    $('li').hover(
+        function() {
+            $(this).css('color', '#F00');
+        },
+        function() {
+            $(this).css('color', '#000');
+        }
+    );
 </script>
 </body>
 </html>
