@@ -136,6 +136,7 @@ function whichStringIsLonger(string1,string2) {
     if (typeof(string1) !== "string" || typeof(string2) !== "string") {
         return "false";
     }
+//Note: elses are not needed when the results are returns. I just like this structure.
     if (len1 > len2) {
         return "first";
     } else if (len1 < len2) {
