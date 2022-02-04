@@ -145,4 +145,30 @@ function whichStringIsLonger(string1,string2) {
         return "neither";
     }
 }
-console.log(whichStringIsLonger(37,"bobby"));
+
+// Write a function called convertLowHighToObject that takes in a string that represents the low and high temperature
+// in this format '35, 42' (assuming low will always be the left value and high the right)
+// and returns an object with the properties 'low' and 'high' with the values of those respective properties
+// set to the corresponding values in the input string.
+//     NOTE: the values in the object should be of the number type
+// Example input: '35, 42'
+// Example return: {low: 35, high: 42}
+
+function convertLowHighToObject(tempStringInput) {
+    let tempArray = [];
+    let commaIndex = tempStringInput.indexOf(",");
+    let lowTemp = tempStringInput.substring(0,commaIndex);
+    let lowTempConverted = parseInt(lowTemp);
+    let spaceIndex = commaIndex+1;
+    let highTemp = tempStringInput.substring(spaceIndex,tempStringInput.length);
+    let highTempConverted = parseInt(highTemp);
+
+    tempArray = {low: lowTempConverted, high: highTempConverted};
+    return tempArray;
+
+    //Note: This can be done much more simply with .split(", ")
+}
+
+console.log(convertLowHighToObject("17,43"));
+
+// console.log(whichStringIsLonger(37,"bobby"));
