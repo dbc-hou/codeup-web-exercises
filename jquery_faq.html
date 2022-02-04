@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery FAQ</title>
+</head>
+
+<style>
+    .invisible {
+        visibility: hidden;
+    }
+
+    .clunk {
+        background-color: cyan;
+    }
+</style>
+
+<body>
+
+
+<h1>Cryptids of Cornwall:</h1>
+<a href="#" id="click-me">Click me to show or hide the descriptions.</a>
+<dl>
+    <dt>Beast of Bodmin</dt>
+    <dd>A large feline inhabiting Bodmin Moor.</dd>
+
+    <dt>Morgawr</dt>
+    <dd>A sea serpent.</dd>
+
+    <dt>Owlman</dt>
+    <dd>A giant owl-like creature.</dd>
+</dl>
+
+<script src="js/jquery.js"></script>
+<script>
+    $('#click-me').click(function (event) {
+        //event.preventDefault();
+            $('dd').toggleClass('invisible');
+    });
+
+    $('dt').click(function (event) {
+        $(this).addClass('clunk');
+    });
+</script>
+
+</body>
+</html>
