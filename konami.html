@@ -10,29 +10,30 @@
 <script src="/js/jquery.js"></script>
 <script>
     "use strict";
-    let konamiCode = [38,38,40,40,37,39,37,39,66,65];
+    let konamiCode = [38,38,40,40,37,39,37,39,66,65,13];
     let konamiIndex = 0;
     let invertedBang = String.fromCharCode(161);
     let nicAnthemAudio = document.getElementById("himno");
     let mainHeadingMessage = invertedBang + 'Felicidades! '
         + invertedBang + 'El Contra ha sido derrotado! '
         + invertedBang + 'Viva Sandino!'
-    // alert("konamiIndex = " + konamiIndex);
+
     $(document).keyup(function(event){
 
-        if (event.keyCode === konamiCode[konamiIndex]) {
+        if (event.which === konamiCode[konamiIndex]) {
             konamiIndex++;
         } else {
             konamiIndex = 0;
         }
-        if (konamiIndex === 10) {
+        if (konamiIndex === 11) {
+            alert("You have added 30 lives!");
             $('#main-heading').html(mainHeadingMessage);
             $('#lives').html('lives: 30');
             $('#my-body').css({'background-image': 'url(img/danielortega.jpg)','background-repeat': 'no-repeat'});
             nicAnthemAudio.play();
         }
         console.log(konamiIndex);
-        console.log(event.keyCode);
+        console.log(event.which + ' ' + event.key);
     });
 
 
