@@ -9,7 +9,7 @@
     width: 500px;
     padding: 10px;
 }
-h1 {
+h1, h2 {
     text-align: center;
 }
 p.buzzphrase {
@@ -46,4 +46,8 @@ tr {
 td {
     border-bottom: solid;
     border-right-style: dotted;
+}
+
+li {
+    padding: .25em 0;
 }

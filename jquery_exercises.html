@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/selectors.css">
     <title>Latin for the End of the World</title>
 </head>
 <body>
@@ -47,11 +48,22 @@
     // $('h1,p,li').css('background-color','#FF0');
 
     $('h1').click(function() {
-        $(this).css('background-color','#0FF');
+        console.log($(this).css('background-color'));
+        if ($(this).css('background-color') === 'rgba(0, 0, 0, 0)') {
+            $(this).css('background-color', '#0FF');
+        } else {
+            $(this).css('background-color', 'rgba(0,0,0,0)');
+        }
     });
+
     $('p').dblclick(function() {
-        $(this).css('font-size','18px');
+        if ($(this).css('font-size') !== '18px') {
+            $(this).css('font-size','18px');
+        } else {
+            $(this).css('font-size', '16px');
+        }
     });
+
     $('li').hover(
         function() {
             $(this).css('color', '#F00');
