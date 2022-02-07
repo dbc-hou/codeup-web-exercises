@@ -13,6 +13,17 @@
     .clunk {
         background-color: cyan;
     }
+
+    .photo-card {
+        width: 250px;
+        height: 350px;
+    }
+
+    #three-card-monty {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 </style>
 
 <body>
@@ -46,6 +57,21 @@
 
 <button type="button" id="highlighter">Highlight List Items</button>
 
+<div id="three-card-monty">
+    <div id="card1" class="photo-card">
+        <img src="img/KentBeck1.png" height="300px" width="250px" id="pic1">
+        <button type="button" id="button1">Swap</button>
+    </div>
+    <div id="card2" class="photo-card">
+        <img src="img/DanielOrtega.jpg" height="300px" width="250px" id="pic2">
+        <button type="button" id="button2">Swap</button>
+    </div>
+    <div id="card3" class="photo-card">
+        <img src="img/MartinF1.png" height="300px" width="250px" id="pic3">
+        <button type="button" id="button3">Swap</button>
+    </div>
+</div>
+
 <h1>Superlative Adjective Exercise</h1>
 <a href="#" id="click-me">Click me to show or hide the correct answers.</a>
 <p><strong>What are the equivalent superlative forms for these adjectives (keeping case, number, and gender the same)?</strong></p>
@@ -74,12 +100,12 @@
     $('dt').click(function() {
         $(this).addClass('clunk');
     });
-
+// This can also be done with an external function, rather than a function definition within a function.
     $('#highlighter').click(function() {
-        let v = $('#acadia-facts');
-        let w = v.children().last();
-        console.log(w.html());
-        w.css('background-color','yellow');
+        // let v = $('#acadia-facts');
+        // let w = v.children().last();
+        // console.log(w.html());
+        // w.css('background-color','yellow');
         $('ul').each(function (index,element) {
             $(this).children().last().css('background-color','#FF0');
         });
@@ -97,6 +123,12 @@
         let z = y.children().first();
         console.log(z.html());
         z.css('color','#00F');
+    });
+// This is the bonus for the JQuery traversal exercise, or rather my attempt at it. I gave up quickly.
+    $('#button1').click(function (event) {
+        let pic1Source = $(this).parent().children().src();
+        let pic2Source = $()
+
     });
 </script>
 
