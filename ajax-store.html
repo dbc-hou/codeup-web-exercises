@@ -61,7 +61,7 @@
         })
     }
     $('#refresh-inventory').click(getInventory);
-    window.onload(getInventory());
+    $(document).ready(getInventory);
 })();
     // (Done, above) TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
