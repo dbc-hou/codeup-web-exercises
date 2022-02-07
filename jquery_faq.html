@@ -16,7 +16,35 @@
 </style>
 
 <body>
+<h1>National Parks That I Have Visited</h1>
+<h3>Big Bend (Texas)</h3>
+<p>4 Fast Facts:</p>
+<ul id="big-bend-facts">
+    <li>It has mountains you can drive up (carefully!).</li>
+    <li>The closest municipality of any size is Alpine, which is two hours' drive away!</li>
+    <li>A good side trip is the Marfa Lights viewing platform between Marfa and Alpine.</li>
+    <li>A college friend of mine died there.</li>
+</ul>
 
+<h3>Yellowstone (Wyoming, Idaho, and Montana)</h3>
+<p>4 Fast Facts:</p>
+<ul id="yellowstone-facts">
+    <li>It is the first US National Park, established in 1872.</li>
+    <li>It is larger than Delaware and Rhode Island combined.</li>
+    <li>The largest geyser in the park, Old Faithful, erupts every 90 minutes on average.</li>
+    <li>The bears and wolves will leave you alone, unless you leave food out unguarded.</li>
+</ul>
+
+<h3>Acadia (Maine)</h3>
+<p>4 Fast Facts:</p>
+<ul id="acadia-facts">
+    <li>It is the only national park in New England.</li>
+    <li>The town of Bar Harbor is on its northeastern edge (great for seafood lovers).</li>
+    <li>Most of it is on Mount Desert Island.</li>
+    <li>On our visit, 4th of July weekend of 2001, the alternator in my van gave out.</li>
+</ul>
+
+<button type="button" id="highlighter">Highlight List Items</button>
 
 <h1>Superlative Adjective Exercise</h1>
 <a href="#" id="click-me">Click me to show or hide the correct answers.</a>
@@ -38,13 +66,37 @@
 
 <script src="js/jquery.js"></script>
 <script>
-    $('#click-me').click(function (event) {
+    $('#click-me').click(function() {
         //event.preventDefault();
             $('dd').toggleClass('invisible');
     });
 
-    $('dt').click(function (event) {
+    $('dt').click(function() {
         $(this).addClass('clunk');
+    });
+
+    $('#highlighter').click(function() {
+        let v = $('#acadia-facts');
+        let w = v.children().last();
+        console.log(w.html());
+        w.css('background-color','yellow');
+        $('ul').each(function (index,element) {
+            $(this).children().last().css('background-color','#FF0');
+        });
+        // console.log($('li').html());
+    });
+
+    $('h3').click(function () {
+        let x = $(this).next().next();
+        x.children('li').css('font-weight','bold');
+    });
+
+    $('li').click(function () {
+        let y = $(this).parent();
+        console.log(y.html());
+        let z = y.children().first();
+        console.log(z.html());
+        z.css('color','#00F');
     });
 </script>
 
