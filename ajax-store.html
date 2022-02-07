@@ -47,7 +47,18 @@
                 let tableBodyHTML = $('#insertProducts').html();
                 $('#insertProducts').html(tableBodyHTML + productLine);
             });
-        });
+        }).fail(function (jqXhr,status,error) {
+            switch (jqXhr.status) {
+                case 400:
+                    alert("Do you actually know what you're doing?");
+                    break;
+                case 404:
+                    alert("Sorry, that file was deleted years ago. Where ya been?");
+                    break;
+                default:
+                    alert("I have no idea what just happened. Call Tech Support.");
+            }
+        })
     }
     $('#refresh-inventory').click(getInventory);
     window.onload(getInventory());
