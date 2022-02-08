@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="posts" class="container">
-        <div id="recent-posts" class="row">
+        <div id="recent-posts" class="row d-flex justify-content-end">
 
         </div>
     </div>
@@ -24,7 +24,7 @@
             type: "GET"
         }).done(function (data,status,jqXhr) {
             data.forEach(function (entry) {
-                let cardDef = `<div class="card col-8 text-end">
+                let cardDef = `<div class="card col-8 text-end bg-dark text-info">
                     <h4>${entry.title}</h4>
                     <p>${entry.content}</p>
                     <p><strong>Categories:</strong> ${entry.categories}</p>
@@ -32,7 +32,9 @@
                     </div>`;
                 $('#recent-posts').append(cardDef);
             });
-        });
+        }).fail(function (jqXhr,status,error) {
+            alert('Error: ' + error);
+        })
     </script>
 </body>
 </html>
