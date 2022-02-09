@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox API Exercise</title>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        #my-map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+            margin-bottom: 1em;
+        }
+    </style>
+
+</head>
+<body>
+<h1>H-Town Q-Zine</h1>
+
+<div id='my-map'></div>
+<label for="search-box">What's your favorite H-Town eatery? Type the name or address here:</label>
+<input id="search-box" type="text">
+<button type="button" id="submit">Mangiamo!</button>
+<script src="js/jquery.js"></script>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+
+<script src="js/keys.js"></script>
+
+<script>
+    (function() {
+        "use strict;"
+
+        let restArray = [];
+
+        restArray[0] = {
+            name: 'Chapultepec Lupita',
+            address: '813 Richmond Avenue Houston TX 77006',
+            popupHTML: restArray[0].name,
+        }
+
+        restArray[1] = {
+            name: 'Cowboys and Indians',
+            address: '519 Shepherd Drive Houston TX 77007',
+            popupHTML: restArray[1].name,
+        }
+
+        restArray[2] = {
+            name: 'Cali Sandwich and Pho',
+            address: '2900 Travis Street Houston TX 77006',
+            popupHTML: restArray[2].name,
+        }
+
+
+        mapboxgl.accessToken = DBC_MAPBOX_API_KEY;
+        const map = new mapboxgl.Map({
+            container: 'my-map', // container ID
+            style: 'mapbox://styles/mapbox/dark-v10', // style URL
+            center: [-95.4,29.8], // starting position [lng, lat]
+            zoom: 16 // starting zoom
+        });
+
+        $(document).ready(function() {
+            moveMapToLocation("813 Richmond Ave, Houston TX", DBC_MAPBOX_API_KEY);
+        });
+
+        function moveMapToLocation(search, token) {
+            var endPoint = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+            $.ajax(endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token, {
+                type: "GET"
+            }).done(function (data, status, jqXhr) {
+                //console.log(data.features[0].place_name);
+                getMarker(data.features[0].center,data.features[0].place_name);
+                map.setCenter(data.features[0].center);
+            });
+                // .then(function(res) {
+                //     return res.json();
+                //     // to get all the data from the request, comment out the following three lines...
+                // }).then(function(data) {
+                //     return data.features[0].center;
+                // });
+        }
+        // function geocode(search, token) {
+        //     var baseUrl = 'https://api.mapbox.com';
+        //     var endPoint = '/geocoding/v5/mapbox.places/';
+        //     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+        //         .then(function(res) {
+        //             return res.json();
+        //             // to get all the data from the request, comment out the following three lines...
+        //         }).then(function(data) {
+        //             return data.features[0].center;
+        //         });
+        // }
+        //
+        // function reverseGeocode(coordinates, token) {
+        //     var baseUrl = 'https://api.mapbox.com';
+        //     var endPoint = '/geocoding/v5/mapbox.places/';
+        //     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+        //         .then(function(res) {
+        //             return res.json();
+        //         })
+        //         // to get all the data from the request, comment out the following three lines...
+        //         .then(function(data) {
+        //             return data;
+        //         });
+        // }
+        //
+        // geocode("813 Richmond Ave Houston TX 77006", DBC_MAPBOX_API_KEY).then(function(results) {
+        //     // console.log(results);
+        //     map.setCenter(results);
+        // });
+        //
+        // reverseGeocode({lat: 32.77, lng: -96.79}, DBC_MAPBOX_API_KEY).then(function(results) {
+        //     console.log(results.features[0].place_name);
+        //     // results.features[0].place_name
+        //
+        // });
+        //
+
+        function letsEat() {
+            moveMapToLocation($('#search-box').val(),DBC_MAPBOX_API_KEY);
+            console.log($('#search-box').val());
+        }
+
+        $('#submit').click(letsEat);
+
+        $('#search-box').keydown(function (event) {
+            if (event.key === 'Enter') {
+                $('#submit').click();
+            }
+        })
+
+        function getMarker(point,placeName) {
+            var marker = new mapboxgl.Marker()
+                    .setLngLat(point)
+                    .addTo(map);
+            var popup = new mapboxgl.Popup()
+                .setLngLat(point)
+                .setHTML("<p>" + placeName + "</p>")
+                .addTo(map);
+            marker.setPopup(popup);
+            //map.setCenter(results.query);
+        }
+
+    })();
+
+</script>
+</body>
+</html>

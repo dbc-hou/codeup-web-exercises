@@ -9,8 +9,8 @@
     <style>
         #map {
             /* the width and height may be set to any size */
-            width: 100%;
-            height: 700px;
+            width: 600px;
+            height: 400px;
         }
     </style>
 </head>
@@ -23,16 +23,24 @@
 
 <!-- Mapbox JS -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-
+<script src="js/keys.js"></script>
 <!-- Custom JS -->
 <script>
-    // mapboxgl.accessToken = (API Token Required);
+    mapboxgl.accessToken = DBC_MAPBOX_API_KEY;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-98.4916, 29.4252]
+        zoom: 8,
+        center: [-95.5, 29.5]
     });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-95.5, 29.5])
+        .addTo(map);
+
+    var popup = new mapboxgl.Popup()
+        .setLngLat([-95.5, 29.5])
+        .setHTML("<p>The Wilds of Missouri City</p>")
+        .addTo(map)
 </script>
 </body>
 </html>

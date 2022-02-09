@@ -25,8 +25,8 @@
         }).done(function (data,status,jqXhr) {
             data.forEach(function (entry) {
                 let cardDef = `<div class="card col-8 text-end bg-dark text-info">
-                    <h4>${entry.title}</h4>
-                    <p>${entry.content}</p>
+                    <h5 class="card-title">${entry.title}</h5>
+                    <p class="card-text">${entry.content}</p>
                     <p><strong>Categories:</strong> ${entry.categories}</p>
                     <p><em>${entry.date}</em></p>
                     </div>`;
