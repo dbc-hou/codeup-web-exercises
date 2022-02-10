@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWeather Lecture Code Samples</title>
+</head>
+<body>
+<script src="/js/keys.js"></script>
+<script>
+    $.ajax({
+        url:   "http://api.openweathermap.org/data/2.5/weather",
+        type:  "GET",
+        data: {
+            APPID: DBC_OW_API_KEY,
+            q: "San Antonio, US"
+        }
+    });
+</script>
+</body>
+</html>
