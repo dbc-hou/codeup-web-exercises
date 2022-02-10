@@ -5,15 +5,15 @@
     <title>OpenWeather Lecture Code Samples</title>
 </head>
 <body>
-<script src="/js/keys.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/jquery.js"></script>
 <script>
-    $.ajax({
-        url:   "http://api.openweathermap.org/data/2.5/weather",
-        type:  "GET",
-        data: {
-            APPID: DBC_OW_API_KEY,
-            q: "San Antonio, US"
-        }
+    $.get("http://api.openweathermap.org/data/2.5/weather", {
+        APPID: DBC_OW_API_KEY,
+        q:     "Houston, US",
+        units: "imperial"
+    }).done(function(data) {
+        $('body').html('<h1>Current Weather:</h1><p>${data}</p>');
     });
 </script>
 </body>
