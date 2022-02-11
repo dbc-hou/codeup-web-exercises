@@ -4,20 +4,48 @@
     <!--    meta includes setup for media queries-->
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Starter Template</title>
+    <title>Weathermap Project</title>
 
     <!--    bootstrap first-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css'
+          rel='stylesheet' />
+    <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+          type="text/css">
+    <link rel="shortcut icon" href="img/favicon.ico">
     <!-- YOUR EXTERNAL AND EMBEDDED STYLESHEETS GO HERE -->
+    <style>
+        h1 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 2em;
+            font-weight: bold;
+        }
 
+        p {
+            font-size: small;
+        }
+        #map {
+            width: 80%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-
 <!--html body goes here-->
+<div class="container-fluid d-flex flex-column align-items-center" id="master-div">
+    <h1>How's the Weather in Your Hood?</h1>
+    <div class="container-fluid"><h4>Five-Day Forecast for This Location:</h4>
+        <div class="row" id="forecast-div">
 
+        </div>
+    </div>
+    <div id="map">
 
-
+    </div>
+</div>
 
 <!--from here down should be js imports-->
 <!-- jquery usually first always -->
@@ -35,16 +63,15 @@
 <script>
 (function () {
 "use strict";
+    var MARKER;
     $(document).ready(function () {
         $.get("http://api.openweathermap.org/data/2.5/onecall", {
             APPID: DBC_OW_API_KEY,
             lat: MY_LNG_LAT_ARRAY[1],
             lon: MY_LNG_LAT_ARRAY[0],
-            units: "imperial"
+            units: "metric"
         }).done(function (data) {
-            console.log('The entire response:', data);
-            console.log('Here is current info:', data.current);
-            console.log('Info for tomorrow:', data.daily[1]);
+            doForecastingStuffForCoords([MY_LNG_LAT_ARRAY[0],MY_LNG_LAT_ARRAY[1]]);
         });
     });
 
@@ -55,27 +82,24 @@
         zoom: 14,
         center: MY_LNG_LAT_ARRAY
     });
-    let MARKER;
+
+    MARKER = new mapboxgl.Marker({
+        draggable: true
+    }).setLngLat(MY_LNG_LAT_ARRAY)
+        .addTo(map);
+    MARKER.on('dragend', endOfMarkerDrag);
 
     map.addControl(
         new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             // localGeocoder: coordinatesGeocoder,
-            zoom: 16,
+            zoom: 14,
             placeholder: 'Try: -40, 170',
             mapboxgl: mapboxgl,
             marker: false,
             // reverseGeocode: true
         })
     );
-
-    $(document).ready(function () {
-        MARKER = new mapboxgl.Marker({
-            draggable: true
-        }).setLngLat(STARTING_COORDS)
-            .addTo(map);
-        MARKER.on('dragend', endOfMarkerDrag);
-    });
 
     function endOfMarkerDrag() {
         const COORDS = MARKER.getLngLat();
@@ -104,13 +128,87 @@
     function doForecastingStuffForCoords(coords) {
         var lng = coords[0];
         var lat = coords[1];
-        $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=hourly,minutely&appid=${DBC_OW_API_KEY}&units=imperial`)
+        var high, low, html, titleDate;
+        var descrip, humidity, pressure;
+        var windSpeed, windDir;
+        var windSpeedAndDir;
+
+        $('#forecast-div').empty();
+        $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=hourly,minutely&appid=${DBC_OW_API_KEY}&units=metric`)
             .done(function (data) {
                 console.log(data);
-                var todaysHiTemp = data.daily[0].temp.max;
-                var html = `<div class=col-12><p>Today's high is: ${todaysHiTemp} ºF</p></div>`
+                for (let i=0;i<=4;i++) {
+                    high = parseInt(data.daily[i].temp.max);
+                    low = parseInt(data.daily[i].temp.min);
+                    titleDate = forecastDate(data.daily[i].dt);
+                    descrip = data.daily[i].weather[0].description;
+                    humidity = data.daily[i].humidity;
+                    windSpeed = data.daily[i].wind_speed;
+                    windDir = calcWindDir(parseInt(data.daily[i].wind_deg));
+                    windSpeedAndDir = `${windDir} ${windSpeed.toString()} kph`;
+                    pressure = data.daily[i].pressure;
+                    html += repopulateWeather(i,high,low,titleDate);
+                    html += weatherDetails(descrip,humidity,windSpeedAndDir,pressure);
+                }
+                console.log(html);
                 $('#forecast-div').html(html);
             });
+    }
+
+    function repopulateWeather(i,hiTemp,loTemp,weatherDate) {
+        var forecastHTML;
+
+        forecastHTML = `<div class="card col-2" id="forecast-${i}">`;
+        forecastHTML += `<div class="card-title bg-info pl-1 text-white" id="forecast-${i}-title"><h6>${weatherDate}</h6></div>`;
+        forecastHTML += `<div class="card-body pl-1 text-dark" id="forecast-${i}-body"></div>`;
+        forecastHTML += `<p>${hiTemp}ºC/${loTemp}ºF</p>`;
+
+        return forecastHTML;
+    }
+
+    function forecastDate(thisDay) {
+        var d = new Date(thisDay * 1000);
+        var year = d.getFullYear().toString();
+        var month = (d.getMonth()+1).toString();
+        var day = d.getDate().toString();
+        var formattedDate;
+        if (d.getMonth() < 9) {
+            month = `0${month}`;
+        }
+        if (d.getDate() < 10) {
+            day = `0${day}`;
+        }
+        formattedDate = `${year}-${month}-${day}`
+        return formattedDate;
+    }
+
+    function weatherDetails(description,humidity,wind,pressure) {
+        var html = `<p>Description: ${description}</p><hr/>`;
+        html += `<p>Humidity: ${humidity}%</p><hr/>`;
+        html += `<p>Wind: ${wind}</p><hr/>`;
+        html += `<p>Pressure: ${pressure} mb</p>`;
+        html += `</div>`;
+        return html;
+    }
+
+    function calcWindDir(cDeg) {
+        if (24 <= cDeg && cDeg <= 68) {
+            return "NE";
+        } else if (69 <= cDeg && cDeg <= 113) {
+            return "E";
+        } else if (114 <= cDeg && cDeg <= 157) {
+            return "SE";
+        } else if (158 <= cDeg && cDeg <= 202) {
+            return "S";
+        } else if (203 <= cDeg && cDeg <= 247) {
+            return "SW";
+        } else if (248 <= cDeg && cDeg <= 293) {
+            return "W";
+        } else if (294 <= cDeg && cDeg <= 338) {
+            return "NW";
+        } else {
+            return "N";
+        }
     }
 })();
 </script>

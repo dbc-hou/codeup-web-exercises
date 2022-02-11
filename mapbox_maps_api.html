@@ -55,12 +55,12 @@
 
 
         mapboxgl.accessToken = DBC_MAPBOX_API_KEY;
-        const map = new mapboxgl.Map({
-            container: 'my-map', // container ID
-            style: 'mapbox://styles/mapbox/dark-v10', // style URL
-            center: [-95.4,29.8], // starting position [lng, lat]
-            zoom: 16 // starting zoom
-        });
+        // const map = new mapboxgl.Map({
+        //     container: 'my-map', // container ID
+        //     style: 'mapbox://styles/mapbox/dark-v10', // style URL
+        //     center: [-95.4,29.8], // starting position [lng, lat]
+        //     zoom: 16 // starting zoom
+        // });
 
         $(document).ready(function() {
             moveMapToLocation("813 Richmond Ave, Houston TX", DBC_MAPBOX_API_KEY);
