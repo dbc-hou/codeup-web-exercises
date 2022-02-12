@@ -35,32 +35,6 @@ function getAgeDMY() {
     document.getElementById('age').innerHTML = 'Your Age is '+y+' Years '+m+' Months '+d+' Days';
 }
 
-function forecastDate(thisDay) {
-    var d = new Date(thisDay * 1000);
-    d = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()
-    // d = d.toISOString().split("T")[0];
-    console.log(d);
-}
-
-function calcWindDir(cDeg) {
-        if (24 <= cDeg && cDeg <= 68) {
-            return "NE";
-        } else if (69 <= cDeg && cDeg <= 113) {
-            return "E";
-        } else if (114 <= cDeg && cDeg <= 157) {
-            return "SE";
-        } else if (158 <= cDeg && cDeg <= 202) {
-            return "S";
-        } else if (203 <= cDeg && cDeg <= 247) {
-            return "SW";
-        } else if (248 <= cDeg && cDeg <= 293) {
-            return "W";
-        } else if (294 <= cDeg && cDeg <= 338) {
-            return "NW";
-        } else {
-            return  "N";
-    }
-
 }
 
 console.log(calcWindDir(170));
