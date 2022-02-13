@@ -8,7 +8,8 @@ const SECONDS_IN_LEAP_YEAR = SECONDS_IN_DAY * 366;
 function doForecastingStuffForCoords(coords) {
     var lng = coords[0];
     var lat = coords[1];
-    var high, low, html, titleDate;
+    var html = ""
+    var high, low, titleDate;
     var descrip, humidity, pressure;
     var windSpeed, windDir;
     var windSpeedAndDir;
@@ -38,8 +39,8 @@ function doForecastingStuffForCoords(coords) {
 function repopulateWeather(i,hiTemp,loTemp,weatherDate) {
     var forecastHTML;
 
-    forecastHTML = `<div class="card col-2" id="forecast-${i}">`;
-    forecastHTML += `<div class="card-title bg-info pl-1 text-white text-center border border-1 border-dark" id="forecast-${i}-title"><h6>${weatherDate}</h6></div>`;
+    forecastHTML = `<div class="card col-md-2" id="forecast-${i}">`;
+    forecastHTML += `<div class="card-title bg-info pl-1 text-white text-center border border-3 border-dark" id="forecast-${i}-title"><h6>${weatherDate}</h6></div>`;
     forecastHTML += `<div class="card-body pl-1 py-0 text-dark" id="forecast-${i}-body">`;
     forecastHTML += `<p>Hi: ${hiTemp}ºC, Lo: ${loTemp}ºC</p>`;
 

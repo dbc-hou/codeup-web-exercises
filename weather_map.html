@@ -16,6 +16,9 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- YOUR EXTERNAL AND EMBEDDED STYLESHEETS GO HERE -->
     <style>
+        body {
+            background-color: deepskyblue;
+        }
         h1 {
             font-family: "Montserrat", sans-serif;
             font-size: 2em;
@@ -33,7 +36,7 @@
             margin-top: 0.2em;
         }
         p {
-            font-size: small;
+            font-size: smaller;
             margin-bottom: 0;
         }
 
@@ -42,6 +45,7 @@
             height: 350px;
             display: flex;
             justify-content: center;
+            border: 3px solid red;
         }
     </style>
 </head>
@@ -49,13 +53,13 @@
 <!--html body goes here-->
 <div class="container-fluid d-flex flex-column align-items-center" id="master-div">
     <h1>How's the Weather in Your Hood?</h1>
-    <div class="container-fluid"><h4>Five-Day Forecast for This Location:</h4>
-        <div class="row" id="forecast-div">
-
-        </div>
-    </div>
     <div id="map">
 
+    </div>
+    <div class="container-fluid mt-4"><h4>Five-Day Forecast for This Location:</h4>
+        <div class="row border border-danger d-flex justify-content-between" id="forecast-div">
+
+        </div>
     </div>
 </div>
 
@@ -93,7 +97,7 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 14,
+        zoom: 10,
         center: MY_LNG_LAT_ARRAY,
     });
 
@@ -133,12 +137,39 @@
         const coordarray = [coordinates.lng, coordinates.lat];
         var popup = new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(coordarray)
-            .setHTML(`<p>Longitude: ${coordinates.lng}<br>Latitude: ${coordinates.lat}</p>`);
+            .setHTML(`<p>Latitude:<br/>${coordinates.lat.toFixed(2)}<br/>
+                Longitude:<br/>${coordinates.lng.toFixed(2)}</p>`);
         MARKER.setPopup(popup);
         popup.addTo(map);
         doForecastingStuffForCoords(coordarray);
     }
 
+    function changeNegativeLatitude(lat) {
+        if (lat < 0) {
+            return Math.abs(lat) + "º S";
+        }
+        if (lat >= 0 && lat <= 90) {
+            return (lat + "º N");
+        }
+        if (lat > 90) {
+            return "(no such latitude)";
+        }
+    }
+
+    function changeNegativeLongitude(lng) {
+        if (isNaN(lng)) {
+            return "(no such longitude)";
+        }
+        if (lng < 0 && lng >= -180) {
+            return Math.abs(lat) + "º W";
+        }
+        if (lng >= 0 && lng <= 180) {
+            return (lat + "º E");
+        }
+        if (lng > 90) {
+            return "(no such longitude)";
+        }
+    }
 })();
 </script>
 </body>
