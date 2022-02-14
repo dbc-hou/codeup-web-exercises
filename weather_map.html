@@ -53,7 +53,8 @@
 <body>
 <!--html body goes here-->
 <div class="container-fluid d-flex flex-column align-items-center" id="master-div">
-    <h1>How's the Weather in Your Hood?</h1>
+    <h1>Crush City Weather Wants to Know...</h1>
+    <h6>How's the Weather in Your Hood?</h6>
     <div id="map">
 
     </div>
@@ -122,7 +123,7 @@
     function endOfMarkerDrag() {
         const COORDS = MARKER.getLngLat();
         // console.log(COORDS);
-        makePopupForCoords(COORDS);
+        makePopupForCoords(COORDS,currentUnits);
     }
 
 // Calls the function to display a popup with the latitude and longitude of the new location moved to.
