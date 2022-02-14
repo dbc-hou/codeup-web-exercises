@@ -53,7 +53,7 @@ function doForecastingStuffForCoords(coords,unitType) {
 function repopulateWeather(i,hiTemp,loTemp,weatherDate,units) {
     var forecastHTML;
 
-    forecastHTML = `<div class="card col-md-2" id="forecast-${i}">`;
+    forecastHTML = `<div class="card m-1 col-md-2" id="forecast-${i}">`;
     forecastHTML += `<div class="card-title bg-info pl-1 text-white text-center border border-3 border-dark" id="forecast-${i}-title"><h6>${weatherDate}</h6></div>`;
     forecastHTML += `<div class="card-body pl-1 py-0 text-dark" id="forecast-${i}-body">`;
     if (units === 'metric') {
