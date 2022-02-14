@@ -85,6 +85,8 @@
 <script>
 (function () {
 "use strict";
+    var currentUnits = "metric";
+
     var MARKER;
     $(document).ready(function () {
         loadMap("metric");
@@ -126,14 +128,14 @@
     function onMoveEnd() {
         const COORDS = map.getCenter();
         MARKER.setLngLat(COORDS);
-        makePopupForCoords(COORDS);
+        makePopupForCoords(COORDS,currentUnits);
     }
 
     map.on('moveend', onMoveEnd);
 
 // This function creates a popup for the new location on the map
 // and calls the function to repopulate the weather information for that location below the map.
-    function makePopupForCoords(coordinates) {
+    function makePopupForCoords(coordinates,units) {
         const coordarray = [coordinates.lng, coordinates.lat];
         var popup = new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(coordarray)
@@ -141,11 +143,8 @@
                 Longitude:<br/>${coordinates.lng.toFixed(2)}</p>`);
         MARKER.setPopup(popup);
         popup.addTo(map);
-        if ($('#metric').checked) {
-            doForecastingStuffForCoords(coordarray,'metric');
-        } else {
-            doForecastingStuffForCoords(coordarray,'imperial');
-        }
+
+        doForecastingStuffForCoords(coordarray,units);
     }
 
 // If the latitude of the location is negative, convert that to degrees south.
@@ -193,11 +192,13 @@
 
 // The two event handlers below are for the radio buttons below the map to change the units in the weather info.
     $('#imperial').click(function (event) {
-        loadMap("imperial");
+        currentUnits = "imperial";
+        makePopupForCoords(map.getCenter(),currentUnits);
     });
 
     $('#metric').click(function (event) {
-        loadMap("metric");
+        currentUnits = "metric";
+        makePopupForCoords(map.getCenter(),currentUnits);
     });
 
 })();

@@ -14,7 +14,7 @@ function doForecastingStuffForCoords(coords,unitType) {
     var lat = coords[1];
     var html = ""
     var high, low, titleDate;
-    var descrip, humidity, pressure;
+    var descrip, icon, humidity, pressure;
     var windSpeed, windDir;
     var windSpeedAndDir;
 
@@ -26,12 +26,13 @@ function doForecastingStuffForCoords(coords,unitType) {
                 high = parseInt(data.daily[i].temp.max);
                 low = parseInt(data.daily[i].temp.min);
                 titleDate = forecastDate(data.daily[i].dt);
+                icon = data.daily[i].weather[0].icon;
                 descrip = data.daily[i].weather[0].description;
                 humidity = data.daily[i].humidity;
                 windSpeed = parseInt(data.daily[i].wind_speed);
                 windDir = calcWindDir(parseInt(data.daily[i].wind_deg));
                 if (unitType === 'metric') {
-                    windSpeedAndDir = `${windDir} ${windSpeed.toString()} kph`;
+                    windSpeedAndDir = `${windDir} ${windSpeed.toString()} m/sec`;
                     pressure = data.daily[i].pressure;
                 } else {
                     windSpeedAndDir = `${windDir} ${windSpeed.toString()} mph`;
@@ -39,7 +40,7 @@ function doForecastingStuffForCoords(coords,unitType) {
                 }
 
                 html += repopulateWeather(i,high,low,titleDate,unitType);
-                html += weatherDetails(descrip,humidity,windSpeedAndDir,pressure,unitType);
+                html += weatherDetails(descrip,humidity,windSpeedAndDir,pressure,unitType,icon);
             }
             //console.log(html);
             $('#forecast-div').html(html);
@@ -61,6 +62,22 @@ function repopulateWeather(i,hiTemp,loTemp,weatherDate,units) {
         forecastHTML += `<p>Hi: ${hiTemp}ºF, Lo: ${loTemp}ºF</p>`;
     }
     return forecastHTML;
+}
+
+// Fill in the remaining weather information in the body of each forecast card:
+// description, humidity, wind, and pressure.
+function weatherDetails(description,humidity,wind,pressure,units,icon_source) {
+    var html = `<img src='https://openweathermap.org/img/wn/${icon_source}.png'>`
+    html += `<p>Description: ${description}</p><hr/>`;
+    html += `<p>Humidity: ${humidity}%</p><hr/>`;
+    html += `<p>Wind: ${wind}</p><hr/>`;
+    if (units==='metric') {
+        html += `<p>Pressure: ${pressure} mb</p>`;
+    } else {
+        html += `<p>Pressure: ${pressure} in Hg</p>`;
+    }
+    html += `</div></div>`;
+    return html;
 }
 
 // Display the date for each day of the forecast in ddd-mm-dd format.
@@ -104,21 +121,6 @@ function convertWeekday(numInput) {
         case 6:
             return "Sat.";
     }
-}
-
-// Fill in the remaining weather information in the body of each forecast card:
-// description, humidity, wind, and pressure.
-function weatherDetails(description,humidity,wind,pressure,units) {
-    var html = `<p>Description: ${description}</p><hr/>`;
-    html += `<p>Humidity: ${humidity}%</p><hr/>`;
-    html += `<p>Wind: ${wind}</p><hr/>`;
-    if (units==='metric') {
-        html += `<p>Pressure: ${pressure} mb</p>`;
-    } else {
-        html += `<p>Pressure: ${pressure} in Hg</p>`;
-    }
-    html += `</div></div>`;
-    return html;
 }
 
 // The weather API returns the wind direction in arc degrees, 0 to 360.
