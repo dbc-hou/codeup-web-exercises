@@ -17,7 +17,7 @@
     <!-- YOUR EXTERNAL AND EMBEDDED STYLESHEETS GO HERE -->
     <style>
         body {
-            background-color: deepskyblue;
+            background-color: orange;
         }
         h1 {
             font-family: "Montserrat", sans-serif;
@@ -56,6 +56,10 @@
     <div id="map">
 
     </div>
+    <div id="options">
+        <input type="radio" id="metric" value="metric" name="measurement-method" checked>Metric
+        <input type="radio" id="imperial" value="imperial" name="measurement-method">US/UK Imperial
+    </div>
     <div class="container-fluid mt-4"><h4>Five-Day Forecast for This Location:</h4>
         <div class="row border border-danger d-flex justify-content-between" id="forecast-div">
 
@@ -83,14 +87,7 @@
 "use strict";
     var MARKER;
     $(document).ready(function () {
-        $.get("http://api.openweathermap.org/data/2.5/onecall", {
-            APPID: DBC_OW_API_KEY,
-            lat: MY_LNG_LAT_ARRAY[1],
-            lon: MY_LNG_LAT_ARRAY[0],
-            units: "metric"
-        }).done(function (data) {
-            doForecastingStuffForCoords([MY_LNG_LAT_ARRAY[0],MY_LNG_LAT_ARRAY[1]]);
-        });
+        loadMap("metric");
     });
 
     mapboxgl.accessToken = DBC_MAPBOX_API_KEY;
@@ -118,13 +115,14 @@
             // reverseGeocode: true
         })
     );
-
+// Calls the function to display a popup with the latitude and longitude of the new location dragged to.
     function endOfMarkerDrag() {
         const COORDS = MARKER.getLngLat();
         // console.log(COORDS);
         makePopupForCoords(COORDS);
     }
 
+// Calls the function to display a popup with the latitude and longitude of the new location moved to.
     function onMoveEnd() {
         const COORDS = map.getCenter();
         MARKER.setLngLat(COORDS);
@@ -133,6 +131,8 @@
 
     map.on('moveend', onMoveEnd);
 
+// This function creates a popup for the new location on the map
+// and calls the function to repopulate the weather information for that location below the map.
     function makePopupForCoords(coordinates) {
         const coordarray = [coordinates.lng, coordinates.lat];
         var popup = new mapboxgl.Popup({closeOnClick: false})
@@ -141,9 +141,14 @@
                 Longitude:<br/>${coordinates.lng.toFixed(2)}</p>`);
         MARKER.setPopup(popup);
         popup.addTo(map);
-        doForecastingStuffForCoords(coordarray);
+        if ($('#metric').checked) {
+            doForecastingStuffForCoords(coordarray,'metric');
+        } else {
+            doForecastingStuffForCoords(coordarray,'imperial');
+        }
     }
 
+// If the latitude of the location is negative, convert that to degrees south.
     function changeNegativeLatitude(lat) {
         if (lat < 0) {
             return Math.abs(lat) + "º S";
@@ -156,6 +161,7 @@
         }
     }
 
+// If the longitude of the location is negative, convert that to degrees west.
     function changeNegativeLongitude(lng) {
         if (isNaN(lng)) {
             return "(no such longitude)";
@@ -170,6 +176,30 @@
             return "(no such longitude)";
         }
     }
+
+// This function reloads the map with the weather information reflecting the unit type selected
+// via the radio buttons (metric or imperial).
+    function loadMap(unitType) {
+        $.get("http://api.openweathermap.org/data/2.5/onecall", {
+            APPID: DBC_OW_API_KEY,
+            lat: MY_LNG_LAT_ARRAY[1],
+            lon: MY_LNG_LAT_ARRAY[0],
+            units: unitType
+        }).done(function (data) {
+            console.log(data);
+            doForecastingStuffForCoords([MY_LNG_LAT_ARRAY[0],MY_LNG_LAT_ARRAY[1]],unitType);
+        });
+    }
+
+// The two event handlers below are for the radio buttons below the map to change the units in the weather info.
+    $('#imperial').click(function (event) {
+        loadMap("imperial");
+    });
+
+    $('#metric').click(function (event) {
+        loadMap("metric");
+    });
+
 })();
 </script>
 </body>
