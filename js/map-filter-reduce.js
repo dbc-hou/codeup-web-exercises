@@ -54,6 +54,11 @@ let longestEmail = users.reduce((longEmail, user) => {
         return longEmail;
     }
 },'');
-console.log(longestEmail);
+// console.log(longestEmail);
 
+let listOfUsersNames = users.reduce((concatString,user) => {
+    concatString += `${user.name}, `;
+    return concatString
+},'');
+console.log(`Your instructors are: ${listOfUsersNames.substring(0,listOfUsersNames.length - 2)}`);
 
