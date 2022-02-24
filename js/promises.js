@@ -1,13 +1,13 @@
 // This has to run via a web page because one cannot log the json data in IntelliJ.
 
 const myAPIData1 = fetch('https://docs.github.com/en/rest/reference/activity#events',
-    {headers: {'Authorization': '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'}})
+    {headers: {'Authorization': DBC_GITHUB_API_KEY}})
     .then(response => response.json())
     .then(users => console.log(users))
     .catch(error => console.log(error));
 
 const myAPIData2 = fetch('https://docs.github.com/en/rest/reference/commits#list-commits',
-    {headers: {'Authorization': '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'}})
+    {headers: {'Authorization': DBC_GITHUB_API_KEY}})
     .then(response => response.json())
     .catch(error => console.log(error));
 
