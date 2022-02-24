@@ -1,12 +1,13 @@
 // This has to run via a web page because one cannot log the json data in IntelliJ.
 
 const myAPIData1 = fetch('https://docs.github.com/en/rest/reference/activity#events',
-    {headers: {'Authorization': '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'}})
+    {headers: {'Authorization': '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'}})
     .then(response => response.json())
+    .then(users => console.log(users))
     .catch(error => console.log(error));
 
 const myAPIData2 = fetch('https://docs.github.com/en/rest/reference/commits#list-commits',
-    {headers: {'Authorization': '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'}})
+    {headers: {'Authorization': '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'}})
     .then(response => response.json())
     .catch(error => console.log(error));
 
@@ -19,6 +20,6 @@ function wait(numMS) {
     }));
 }
 
-// wait(3000).then(() => {
-//     console.log(`You'll see this after 3 seconds.`)
-// });
+wait(3000).then(() => {
+    console.log(`You'll see this after 3 seconds.`)
+});
