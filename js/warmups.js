@@ -172,3 +172,59 @@ function convertLowHighToObject(tempStringInput) {
 console.log(convertLowHighToObject("17,43"));
 
 // console.log(whichStringIsLonger(37,"bobby"));
+
+// Write a function called countDuplicates that takes in a string
+// and returns an object that contains the count for each letter within the given string.
+//     ex: countDuplicates("adsjfdsfsfjsdjfhacabcsbajda")
+// returns { a: 5, d: 4, s: 5, j: 4, f: 4, h: 1, c: 2, b: 2 }
+
+function countDuplicates(strInput) {
+    let countObject = {};
+    let letterCount = 1;
+    let strLower = strInput.toLowerCase();
+    for (let i = 0; i < strInput.length; i++) {
+        if (!(strInput[i] in countObject)) {
+            countObject[strInput[i]] = letterCount;
+        } else {
+            countObject[strInput[i]] = countObject[strInput[i]] + 1;
+        }
+    }
+    return countObject;
+}
+// console.log(countDuplicates("supercalifragilisticexpialidocious"))
+
+// Write a function called makePerson. It takes 2 arguments: personName and age.
+//     personName must be at least 1 character long. age must be between 1 and 150.
+// If either of the parameters is invalid, output an appropriate message to the console and return FALSE.
+//     If both parameters are valid, return an object containing personName and age.
+//     E.g.,
+//     console.log(makePerson("Bob", 30)); // outputs {personName:"Bob", age:30}
+// console.log(makePerson("", 30));
+// outputs:
+// Person name cannot be blank
+// false
+
+function makePerson(personName, age) {
+    let person = {
+        name: personName,
+        age: age
+    };
+    if (typeof age !== "number") {
+        console.log("The person's age must be a number.");
+        return false;
+    }
+    if (typeof personName !== "string") {
+        console.log("The person's name must be a text string.");
+        return false;
+    }
+    if (personName.length === 0) {
+        console.log("The name cannot be blank.");
+        return false;
+    }
+    if (age < 0 && age > 150) {
+        console.log("Age must be between 0 and 150.")
+    }
+    return person;
+}
+
+console.log(makePerson("David", 59));
